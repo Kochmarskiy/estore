@@ -1,0 +1,52 @@
+
+			<div class="contenl" ng-controller="item" >
+				<table class="item">
+				</br>
+					<tr>
+				<td>
+					<h3>{{item.name}}</h3>
+				<img class="cover" ng-src="{{item.pathToImage}}" width="240px" height="350px" /></br>
+					<input type="image" src="/static/images/buttons/buy.png" ng-click="addItemForBasket(item.name,id,item.pathToImage,item.price)">
+				<div class="price"><b id="price"><i id="nameprice">Цена</i>{{item.price}} грн</b></div>
+			</td>
+				<td>
+
+					<ul class="describe">
+						</br></br></br></br>
+						<li ng-repeat="characteristic in item.characteristics">
+							<i>{{characteristic.denomination}}:</i> {{characteristic.content}}
+						</li>
+					</ul>
+			</td>
+			</tr>
+					</table>
+<h1 class="label">Описание</h1>
+				<p class="itemsdescribe">
+					{{item.describe}}
+					</p>
+				<div ng-controller="comment">
+<h2 class="label">Комментарии</h2>
+					EMAIL: <input type="email"/>  </br>
+					Имя :  <input type="text" ng-model="message.nickName" maxlength="30" /></br>
+<textarea rows="6" cols="70" maxlength="600" ng-model="message.comment"></textarea></br>
+				<input type="button" value="Отправить" ng-click="addcomment()">
+				<hr/>
+				<p class="comment" ng-repeat="comment in comments">
+					<b><i>{{comment.nickName}}</i></b>
+					{{comment.comment}}
+					<details >
+						<summary>Ответы</summary>
+						<hr/>
+						<textarea cols="50" rows="2"></textarea>
+						<button>
+							Ответить
+						</button>
+					</details>
+	</p>
+		<div class="page">
+						<a ng-repeat="x in countPageForComments" ng-href="item?id={{loc.id}}&c={{x*10}}#comment"><div ng-attr-id="'c' + {{x+1}}" class="nP">{{x+1}}</div></a>
+			</div>
+					<script type="text/javascript">draw();</script>
+</div>
+			</div>
+			<a name="comment"></a>

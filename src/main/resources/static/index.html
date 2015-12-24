@@ -1,0 +1,91 @@
+﻿<html>
+<head>
+	<meta charset="UTF-8">
+	<base href="/">
+
+	<title>
+		Главная
+	</title>
+	<link href="/static/style/stylebackup.css" rel="stylesheet"/>
+
+</head>
+	<body>
+		<div class="header">
+			<a href="/start"><img class="logo" src="/static/images/logo.jpg"/></a>
+			<div class="bas" onclick="show('block')">
+			<img class="basket" src="/static/images/basket.png" /></br>
+			<b id="basketk">Корзина</b>
+			</div>
+			<div class="coreheader">
+				<form class="search" action="style.css" method="POST">
+					<input id="inputforsearch" type="text">
+					<input id="startsearch" type="submit" value="поиск">
+				</form>
+			</div>
+			<form class="signin" action="style.css" method="POST">
+					<input id="login" type="text"/></br>
+					<input id="password" type="password"/></br>
+					<input id="singin" type="submit" value="войти" >
+					<a href="#win1" class="button button-green" id="registration">Регистрация</a>
+				</form>
+		</div>
+		<div class="middle" ng-app="app">
+			<div class="menu" ng-controller="categorylist">
+				<ul>
+					<li class="category" ng-repeat="category in list">
+						<a href="/items?category={{category.id}}&c=0">{{category.name}}</a>
+					</li>
+
+				</ul>
+			</div>
+			<div class="content" >
+			<ng-view></ng-view>
+			</div>
+			<div class="banner">
+					<img src="/static/images/reklama/banner.jpg"/>
+					<img src="/static/images/reklama/banner.jpg"/>
+			</div>
+			<div id="basket" ng-controller="basket" >
+				<img class="close" onclick="show('none')" src="http://sergey-oganesyan.ru/wp-content/uploads/2014/01/close.png"/>
+				<table>
+					<tr>
+						<th>
+							Название
+						</th>
+						<th>
+							Цена
+						</th>
+					</tr>
+					<tr ng-repeat="item in listOfIdItems">
+						<td>
+							<p align="center">
+							<a ng-href="/item?id={{item.linkItem}}&c=0">
+							<p>{{item.name}}</p>
+
+							<img width="70px" height="110px" ng-src="{{item.pathToImage}}"/>
+								</a>
+							</p>
+
+						</td>
+						<td>
+							<p align="center">{{item.price}}грн</p>
+
+						</td>
+					</tr>
+				</table>
+
+				Список товаров
+
+			</div>
+
+		</div>
+
+
+
+		<script src="/static/lib/angular.js"></script>
+		<script src="/static/lib/angular-route.js"></script>
+		<script src="/static/js/controller.js"></script>
+			</body>
+	
+	
+</html>

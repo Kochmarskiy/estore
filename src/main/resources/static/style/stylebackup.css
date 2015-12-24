@@ -1,0 +1,346 @@
+body{
+	
+}
+div{
+	
+	margin-top : 1px;
+	
+	
+	
+}
+details, p.response{
+	display : inline;
+}
+
+div.name{
+	word-wrap:break-all;
+	height: 3em;
+	overflow: hidden;
+	margin-bottom: 10px;
+
+
+}
+div.price{
+	
+margin-right:0px;
+
+	display: inline;
+	height: 20px;
+	width: 100px;
+	padding: 10px;
+
+
+
+	
+	
+
+}
+div.header{
+	width: 100%;
+	min-width: 1000px;
+	position: fixed;
+	min-height: 100px;
+	top:-1px;
+	background-color: rgb(35,47,62);
+	z-index: 10;
+	border-bottom: 1px solid black;
+	border-left: 1px solid black;
+	border-radius: 70px 30px 30px 20px;
+
+
+}
+div.coreheader{
+	position: absolute;
+	left:30%;
+	bottom:60%;
+}
+div.middle{
+	
+	position: absolute;
+	margin-top:100px;
+	width:80%;
+	min-width: 1100px;
+	max-width: 1400px;
+	height: 100%;
+	
+	left:5%;
+	right: 0%;
+	
+
+}
+div.itemelement{
+	display:inline-block;
+	max-width:29%;
+	min-width:29%;
+}
+div.books{
+	
+	width: 100%;
+	max-width: 100%;
+
+
+
+}
+td{
+	width: 50%;
+	vertical-align: top;
+
+	
+		
+
+
+}
+tr.bookslist{
+	
+	margin-top: 2px
+
+
+}
+td.shortdescribe{
+max-width: 150px;
+}
+form{
+	
+}
+
+form.search{
+
+display: block;
+position: absolute;
+right:50%;
+}
+form.signin{
+	
+position: absolute;
+right:30px;
+top:20%;
+}
+input#inputforsearch{
+	width:300px;
+	height: 30px;
+	position: absolute;
+	font-size: 15px;
+	border-radius: 50px 50px 50px 50px;
+	
+}
+div#startsearch{
+	background-image: url(../images/buttonsearch.png);
+
+
+}
+
+input#startsearch{
+	position: absolute;
+	top:5px;
+	left: 310px;
+
+
+}
+div.page{
+	position:absolute;
+	right:40%;
+}
+div.nP{
+	display : inline;
+	border-radius: 50px 50px 50px 50px;
+	border: 1px solid black;
+	max-width:20px;
+	padding: 5px;
+   background-color: rgb(200,200,200);
+}
+details{
+	display:inline;
+}
+div.menu{
+	width:250px;
+	position: absolute;
+	left:0px;
+	min-width: 250px;
+
+}
+div.content{
+	min-width:400px;
+	border-color: red;
+	position: absolute;
+	left:260px;
+	max-width: 550px;
+z-index: 3;
+
+	
+}
+
+h1.label,h2.label{
+font-family: serif;
+	color: #FFFFFF;
+	background-color: #383838;
+	border-radius: 50px 50px 50px 50px;
+	width:100%;
+}
+div.banner{
+	width:250px;
+	min-width: 50px;
+	left:820px;
+	position: absolute;
+
+}
+img.logo{
+	left:40px;
+	top:10px;
+	position: absolute;
+
+	
+}
+b#basket{
+	color:white;
+}
+div.bas{
+	right:300px;
+	top:10px;
+	position: absolute;
+
+}
+li {
+    list-style-type: none; /* Убираем маркеры */
+
+   }
+li.category{
+	background-color: #FFDEAD;
+	margin-top: 3px;
+	color:#363636;
+	border-radius: 0px 50px 50px 5px;
+
+}
+p.p{
+	width : 500px;
+	overflow: hidden;
+
+}
+div.footer{
+	position: absolute;
+	bottom: 0px;
+	left: -5%;
+	z-index: 20;
+	color:white;
+	background-color: gray;
+	width: 113%;
+	border: 2px solid black;
+
+	}
+.cover{
+	
+
+margin-left: auto;
+margin-top: -0px;
+	
+}
+h1,h2{
+	text-align: center;
+}
+.describe{
+margin-left:-30px;
+}
+ul.describe{
+word-wrap:break-word;	
+width: 300px;
+
+}
+i#nameprice{
+	font-size: x-large;
+	color: limegreen;
+	display: block;
+}
+p.itemsdescribe{
+	width: 100%;
+	background-color: cornsilk;
+	line-height: 1.5;
+	font-size: large;
+	text-shadow: 1px 1px 2px white, 0 0 1em white;
+
+
+}
+#c2{
+	background-color: red;
+}
+p.comment{
+
+	margin-left:10px;
+	border-width: 1px;
+	border-top: 0px;
+	border-right:0px;
+	border-style: solid;
+	border-color: #871518;
+	overflow: hidden;
+	max-width: 500px;
+	word-wrap : break-word;
+
+
+	 
+}
+textarea { resize: none;
+
+ }
+
+img.close{
+	position: absolute;
+	right: 0px;
+	top: 0px;
+}
+b#price{
+	font-family: Monospaced;
+	font-size: large;
+	color: brown;
+}
+div#basket{
+	display: none;
+	position: fixed;
+	min-weight: 300px;
+	min-height: 200px;
+	max-height:600px;
+	width:700px;
+	left:300px;
+	top:200px;
+	border: 1px solid black;
+	background-color: rgba(255, 240, 255, 1);
+	overflow: scroll;
+	z-index:100;
+}
+p.response{
+	width: 100%;
+	min-width: 500px;
+	margin-left: 20px;
+	border-width: 1px;
+	border-top: 0px;
+	border-right:0px;
+	border-style: solid;
+	border-color: gray;
+	word-wrap : break-word;
+	margin-top: 0px;
+	
+	background-color: rgb(250,240,220);
+}
+.itemsname{
+	word-wrap: break-word;
+	max-height: 4em;
+	overflow: hidden;
+
+
+}
+
+table.registration{
+	border: 1px solid black;
+
+}
+a#registration{
+	color:white;
+}
+details{
+
+	margin-top: -15px;
+	margin-left:30px;
+	width:80px;
+	
+	
+}
+summary{
+	background-color: green;
+}

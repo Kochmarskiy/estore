@@ -1,0 +1,23 @@
+			<div class="contentk" ng-controller="booklist" >
+				<div class="books">
+					
+					<div class="itemelement" ng-repeat="item in list">
+
+
+							<div class="name">{{item.name}}</div>
+							<img ng-src="{{item.pathToImage}}" name="item1" height="180px" width="150px"/>
+							<div align="center"><b>{{item.price}}грн</b></div></br>
+							<a ng-href="http://localhost:8080/item?id={{item.linkItem}}&c=0"><img src="/static/images/buttons/detail.png"></a>
+							<input type="image" src="/static/images/buttons/buy.png" ng-click="addItemForBasket(item.name,item.linkItem,item.pathToImage,item.price)"/>
+
+									<hr/>
+
+					</div>
+					<div class="page">
+						<a ng-repeat="x in countPageForItems" ng-href="items?category={{category}}&c={{x*12}}"><div ng-attr-id="{{'p-' + (x+1)}}" class="nP">{{x+1}}</div></a>
+					</div>
+
+					</div>
+
+				<p></p>
+</div>
