@@ -15,7 +15,7 @@ function categorylist($scope,$http){
 
     $scope.list = [];
     $http.get('/category/list').
-        success(function(data, status, headers, config) {
+        success(function(data) {
             $scope.list = data;
 
         })
@@ -27,6 +27,7 @@ function show(state){
 
 }
 function booklist($scope, $http, $location, $rootScope) {
+
 
 if($rootScope.listOfIdItems===undefined)
     $rootScope.listOfIdItems = [];
@@ -40,7 +41,7 @@ if($rootScope.listOfIdItems===undefined)
 $scope.category = $location.search().category;
     $scope.countPageForItems = [];
     $http.get('/count?category='+$scope.category).
-        success(function(data, status, headers, config) {
+        success(function(data) {
             var count = data;
             var c = 12;
             if(count%c==0)
@@ -80,9 +81,55 @@ function draw(){
     alert(req.exec(search));
 }
 item.$inject=['$scope','$http','$location','$rootScope'];
-function comment($scope,$http,$location,$interval)
+function signIn($scope,$rootScope,$http,$route){
+    $scope.login ="";
+    $scope.password="";
+    // 'Authorization': 'Basic Y2xpZW50YXBwOjEyMzQ1Ng=='
+    $scope.signOut = function(){
+        $rootScope.token=undefined;
+        $route.reload();
+    }
+    $scope.signIn = function(){
+        $http({
+            method: 'POST',
+            url: "http://clientapp:123456@localhost:8080/oauth/token",
+            data: "password="+$scope.password+"&username="+$scope.login+"&grant_type=password&scope=read%20write&client_secret=123456&client_id=clientapp",
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'
+                        }
+        }).success(function(data) {
+            if(data.access_token!=null){ $rootScope.token = data.access_token;
+                $http({
+                    method: 'GET',
+                    url: "/user",
+
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded',
+                                'Authorization': 'Bearer '+$rootScope.token}
+                }).success(function(user){
+                    $rootScope.user=user;;
+                })
+            }
+            $route.reload();
+
+        })
+
+    }
+}
+signIn.$inject=['$scope','$rootScope','$http','$route'];
+function comment($scope,$http,$location,$interval,$rootScope)
 {
     $scope.loc = $location.search();
+    $scope.delete = function(id,idOnPage){
+        $http({
+            method: 'POST',
+            url: "/comment/delete",
+             headers: {'Content-Type': 'application/x-www-form-urlencoded',
+                'Authorization': 'Bearer '+$rootScope.token},
+              data : "id="+id
+        });
+
+        document.getElementById("comment"+idOnPage).innerHTML="<b>Удалено</b>";
+
+    }
     $scope.getcomments = function(){
     $http.get('/comment/datacomment?id='+$location.search().id+'&c='+$location.search().c).
         success(function(data, status, headers, config) {
@@ -109,7 +156,10 @@ function comment($scope,$http,$location,$interval)
         itemId : $location.search().id
 }
     $scope.comments = [];
+
     $scope.addcomment = function(){
+        if($rootScope.token!=undefined)
+            $scope.message.nickName=$rootScope.user.login;
         $http({
             method: 'POST',
             url: "/comment/addcomment",
@@ -123,13 +173,14 @@ function comment($scope,$http,$location,$interval)
    $scope.getcomments();
 
 }
-comment.$inject=['$scope','$http','$location','$interval'];
+comment.$inject=['$scope','$http','$location','$interval','$rootScope'];
 angular.module('app',['ngRoute']).controller('booklist',booklist)
     .controller('LocationController',LocationController)
     .controller('item',item)
     .controller('comment',comment)
     .controller('categorylist',categorylist)
     .controller('basket',basket)
+    .controller('signIn',signIn)
     .config(function($routeProvider, $locationProvider) {
 
         $routeProvider
@@ -145,7 +196,12 @@ angular.module('app',['ngRoute']).controller('booklist',booklist)
                 controller: 'LocationController',
                 templateUrl: '/static/item1.html'
             }
-        );
+        )
+            .when('/additem', {
+                controller: 'LocationController',
+                templateUrl: '/static/additem.html'
+            })
+        ;
         $locationProvider.html5Mode(true);
     }
     );

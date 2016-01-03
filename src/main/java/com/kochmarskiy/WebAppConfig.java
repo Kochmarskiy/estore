@@ -66,6 +66,10 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
         return new CategoryDAOImpl(getDataSource());
 
     }
+    @Bean
+    public UserRepository getUserRepository(){
+        return new UserRepositoryImpl(getDataSource());
+    }
 
 
 }

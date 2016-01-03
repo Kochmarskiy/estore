@@ -1,7 +1,7 @@
 package com.kochmarskiy.controller;
 
 import com.kochmarskiy.dao.CategoryDAO;
-import com.kochmarskiy.item.Category;
+import com.kochmarskiy.entity.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

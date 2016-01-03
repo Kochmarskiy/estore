@@ -26,14 +26,17 @@
 					</p>
 				<div ng-controller="comment">
 <h2 class="label">Комментарии</h2>
-					EMAIL: <input type="email"/>  </br>
-					Имя :  <input type="text" ng-model="message.nickName" maxlength="30" /></br>
+					<div ng-show="token===undefined">
+					EMAIL: <input  type="email"/>  </br>
+					Имя :  <input  type="text" ng-model="message.nickName" maxlength="30" /></br>
+					</div>
 <textarea rows="6" cols="70" maxlength="600" ng-model="message.comment"></textarea></br>
 				<input type="button" value="Отправить" ng-click="addcomment()">
 				<hr/>
-				<p class="comment" ng-repeat="comment in comments">
+				<p ng-attr-id="{{'comment' + $index}}" class="comment" ng-repeat="comment in comments track by $index">
 					<b><i>{{comment.nickName}}</i></b>
 					{{comment.comment}}
+					<button ng-show="user.rank.authority=='ROLE_ADMIN'" ng-click="delete(comment.id,$index)">Удалить</button>
 					<details >
 						<summary>Ответы</summary>
 						<hr/>

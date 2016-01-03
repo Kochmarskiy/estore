@@ -1,4 +1,4 @@
-package com.kochmarskiy.item;
+package com.kochmarskiy.entity;
 
 /**
  * Created by Кочмарский on 06.12.2015.

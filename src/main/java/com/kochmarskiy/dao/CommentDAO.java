@@ -1,7 +1,5 @@
 package com.kochmarskiy.dao;
 
-import com.kochmarskiy.item.Comment;
-
 import java.util.List;
 
 /**
@@ -12,4 +10,5 @@ public interface CommentDAO<T> {
 
     public List<T> commentsFor(int id, int count);
     public int count(int itemId);
+    public void delete(int id);
 }

@@ -1,21 +1,16 @@
 package com.kochmarskiy.controller;
 
-import com.kochmarskiy.dao.CommentDAO;
 import com.kochmarskiy.dao.ItemDAO;
 import com.kochmarskiy.dao.ItemShortDescribeDAO;
-import com.kochmarskiy.dao.ItemShortDescribeDAOImpl;
-import com.kochmarskiy.item.Item;
-import com.kochmarskiy.item.ItemShortDescribe;
-import org.apache.tomcat.util.http.fileupload.IOUtils;
+import com.kochmarskiy.entity.Item;
+import com.kochmarskiy.entity.ItemShortDescribe;
+import com.kochmarskiy.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
-import javax.websocket.server.PathParam;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.StringWriter;
 import java.util.List;
 import java.util.Scanner;
 
@@ -29,6 +24,10 @@ public class ItemController {
     private ItemShortDescribeDAO itemShortDescribeDAO;
     @Autowired
     private ItemDAO itemDAO;
+    @RequestMapping(value="/user", method = RequestMethod.GET)
+    public User getUserInfo(@AuthenticationPrincipal User user) {
+        return user;
+    }
 
     @RequestMapping(value="/{page}", method = RequestMethod.GET)
     public String getPage(@PathVariable String page) throws IOException {
@@ -39,6 +38,7 @@ public class ItemController {
                 sb.append(sc.nextLine());
 
         }
+
         return sb.toString();
     }
     @RequestMapping(value="listofbasket", method=RequestMethod.POST, consumes = {"application/json"})

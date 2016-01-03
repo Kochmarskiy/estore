@@ -1,4 +1,6 @@
-			<div class="contentk" ng-controller="booklist" >
+
+<div  class="contentk" ng-controller="booklist" >
+	<a ng-show="user.rank.authority=='ROLE_ADMIN'" href="/additem">Добавить товар</a>
 				<div class="books">
 					
 					<div class="itemelement" ng-repeat="item in list">

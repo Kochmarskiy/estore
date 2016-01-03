@@ -1,6 +1,6 @@
 package com.kochmarskiy.dao;
 
-import com.kochmarskiy.item.Category;
+import com.kochmarskiy.entity.Category;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.sql.DataSource;

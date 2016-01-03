@@ -9,7 +9,7 @@
 	<link href="/static/style/stylebackup.css" rel="stylesheet"/>
 
 </head>
-	<body>
+	<body ng-app="app">
 		<div class="header">
 			<a href="/start"><img class="logo" src="/static/images/logo.jpg"/></a>
 			<div class="bas" onclick="show('block')">
@@ -22,14 +22,16 @@
 					<input id="startsearch" type="submit" value="поиск">
 				</form>
 			</div>
-			<form class="signin" action="style.css" method="POST">
-					<input id="login" type="text"/></br>
-					<input id="password" type="password"/></br>
-					<input id="singin" type="submit" value="войти" >
-					<a href="#win1" class="button button-green" id="registration">Регистрация</a>
-				</form>
+			<div class="signin" ng-controller="signIn">
+					<input ng-show="token===undefined" ng-model="login" id="login" type="text"/></br>
+					<input ng-show="token===undefined" ng-model="password" id="password" type="password"/></br>
+					<input ng-show="token===undefined"  ng-click="signIn()" id="singin" type="submit" value="войти" >
+					<a ng-show="token===undefined" href="#win1" class="button button-green" id="registration">Регистрация</a>
+					<input ng-hide="token===undefined"  ng-click="signOut()" type="submit" value="Выйти" >
+				    <div ng-hide="token===undefined">Здравствуйте {{user.login}}</div>
+				</div>
 		</div>
-		<div class="middle" ng-app="app">
+		<div class="middle" >
 			<div class="menu" ng-controller="categorylist">
 				<ul>
 					<li class="category" ng-repeat="category in list">

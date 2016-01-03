@@ -1,15 +1,12 @@
 package com.kochmarskiy.dao;
 
-import com.kochmarskiy.item.AnswerComment;
-import com.kochmarskiy.item.Characteristic;
-import com.kochmarskiy.item.Comment;
-import com.kochmarskiy.item.Item;
+import com.kochmarskiy.entity.AnswerComment;
+import com.kochmarskiy.entity.Comment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCallback;
-import org.springframework.jdbc.core.ResultSetExtractor;
 
 import javax.sql.DataSource;
 import java.sql.PreparedStatement;
@@ -73,7 +70,14 @@ public class CommentDAOImpl implements CommentDAO<Comment> {
     @Override
     public int count(int itemId) {
         String sql = "SELECT COUNT(*) from comment WHERE ID_PRODUCT="+itemId;
+
        return jdbcTemplate.queryForObject(sql, Integer.class);
 
  }
+
+    @Override
+    public void delete(int id) {
+        String sql = "DELETE from comment WHERE ID_COMMENT="+id;
+        jdbcTemplate.execute(sql);
+    }
 }

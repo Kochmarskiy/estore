@@ -1,4 +1,4 @@
-package com.kochmarskiy.item;
+package com.kochmarskiy.entity;
 
 import java.util.List;
 import java.util.Objects;

@@ -1,17 +1,14 @@
 package com.kochmarskiy.dao;
 
-import com.kochmarskiy.item.Characteristic;
-import com.kochmarskiy.item.Item;
-import com.kochmarskiy.item.ItemShortDescribe;
+import com.kochmarskiy.entity.Characteristic;
+import com.kochmarskiy.entity.Item;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
-import org.springframework.jdbc.core.RowMapper;
 
 import javax.sql.DataSource;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**

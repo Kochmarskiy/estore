@@ -1,6 +1,6 @@
 package com.kochmarskiy.dao;
 
-import com.kochmarskiy.item.ItemShortDescribe;
+import com.kochmarskiy.entity.ItemShortDescribe;
 
 import java.util.List;
 

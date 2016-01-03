@@ -1,6 +1,6 @@
 package com.kochmarskiy.dao;
 
-import com.kochmarskiy.item.Item;
+import com.kochmarskiy.entity.Item;
 
 /**
  * Created by Кочмарский on 05.12.2015.

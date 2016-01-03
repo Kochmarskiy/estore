@@ -1,7 +1,6 @@
 package com.kochmarskiy.dao;
 
-import com.kochmarskiy.item.AnswerComment;
-import com.kochmarskiy.item.Comment;
+import com.kochmarskiy.entity.AnswerComment;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.sql.DataSource;
@@ -39,5 +38,10 @@ public class AnswerCommentDAOImpl implements CommentDAO<AnswerComment> {
     @Override
     public int count(int itemId) {
         return 0;
+    }
+
+    @Override
+    public void delete(int id) {
+
     }
 }

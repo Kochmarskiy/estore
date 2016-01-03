@@ -1,6 +1,6 @@
 package com.kochmarskiy.dao;
 
-import com.kochmarskiy.item.ItemShortDescribe;
+import com.kochmarskiy.entity.ItemShortDescribe;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
