@@ -5,7 +5,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.sql.DataSource;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Кочмарский on 11.12.2015.
@@ -24,6 +26,7 @@ public class CategoryDAOImpl implements CategoryDAO {
     @Override
     public List<Category> getCategories()
         {
+
             String sql = "SELECT * FROM product_category";
             List<Category> list = jdbcTemplate.query(sql,(ResultSet rs, int rowNum)-> {
                         return new Category(rs.getInt("ID_CATEGORY"),rs.getString("NAME_CATEGORY"));

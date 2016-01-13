@@ -29,6 +29,8 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
                 .addResourceLocations("/js/");
         registry.addResourceHandler("/lib/**")
                 .addResourceLocations("/lib/");
+        registry.addResourceHandler("/static/images/items/**")
+                .addResourceLocations("file:/E://images/");
 
 
     }

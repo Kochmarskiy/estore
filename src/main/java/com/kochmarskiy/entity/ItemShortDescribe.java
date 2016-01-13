@@ -51,4 +51,12 @@ public class ItemShortDescribe {
     public void setLinkItem(String linkItem) {
         this.linkItem = linkItem;
     }
+
+    @Override
+    public String toString() {
+        return "ItemShortDescribe{" +
+                "price=" + price +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

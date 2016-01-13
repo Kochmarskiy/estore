@@ -7,31 +7,46 @@
 		Главная
 	</title>
 	<link href="/static/style/stylebackup.css" rel="stylesheet"/>
+	<script src="/static/lib/angular.js"></script>
+	<script src="/static/lib/angular-route.js"></script>
+	<script src="/static/lib/angular-local-storage.js"></script>
+	<script src="/static/js/controller.js"></script>
 
 </head>
 	<body ng-app="app">
 		<div class="header">
-			<a href="/start"><img class="logo" src="/static/images/logo.jpg"/></a>
+			<a href="/items?category=1&c=0"><img class="logo" src="/static/images/logo.jpg"/></a>
+
 			<div class="bas" onclick="show('block')">
 			<img class="basket" src="/static/images/basket.png" /></br>
 			<b id="basketk">Корзина</b>
 			</div>
+
 			<div class="coreheader">
 				<form class="search" action="style.css" method="POST">
 					<input id="inputforsearch" type="text">
 					<input id="startsearch" type="submit" value="поиск">
 				</form>
 			</div>
+
 			<div class="signin" ng-controller="signIn">
 					<input ng-show="token===undefined" ng-model="login" id="login" type="text"/></br>
 					<input ng-show="token===undefined" ng-model="password" id="password" type="password"/></br>
-					<input ng-show="token===undefined"  ng-click="signIn()" id="singin" type="submit" value="войти" >
-					<a ng-show="token===undefined" href="#win1" class="button button-green" id="registration">Регистрация</a>
-					<input ng-hide="token===undefined"  ng-click="signOut()" type="submit" value="Выйти" >
-				    <div ng-hide="token===undefined">Здравствуйте {{user.login}}</div>
-				</div>
+					<input ng-show="token===undefined"  ng-click="signIn()" id="singin" type="submit" value="войти" />
+					<a ng-show="token===undefined" class="button button-green"  id="registration1"   onclick="showReg('block')">
+					Регистрация
+					</a>
+
+					<input ng-hide="token===undefined"  ng-click="signOut()" type="submit" value="Выйти"/>
+
+				    <div ng-hide="token===undefined">
+						Здравствуйте {{user.login}}
+					</div>
+
+		     </div>
 		</div>
 		<div class="middle" >
+
 			<div class="menu" ng-controller="categorylist">
 				<ul>
 					<li class="category" ng-repeat="category in list">
@@ -40,13 +55,27 @@
 
 				</ul>
 			</div>
+
 			<div class="content" >
-			<ng-view></ng-view>
+				<ng-view></ng-view>
 			</div>
+
+
 			<div class="banner">
 					<img src="/static/images/reklama/banner.jpg"/>
 					<img src="/static/images/reklama/banner.jpg"/>
 			</div>
+			<div id="registration">
+				<img class="close1" onclick="showReg('none')" src="http://sergey-oganesyan.ru/wp-content/uploads/2014/01/close.png"/>
+				Имя <input type="text" maxlength="30" id="name" required/> </br>
+				Фамилия <input type="text" maxlength="30" id="surName" required/></br>
+				Отчество <input type="text" maxlength="30" id="secondName" required/></br>
+				Логин <input type="text" maxlength="15" id="logName" required/></br>
+				Пароль <input type="password" maxlength="30" id="passwordIn" required/></br>
+				<input onclick="signUp()" type="button" value="Зарегистрироваться"/>
+
+			</div>
+
 			<div id="basket" ng-controller="basket" >
 				<img class="close" onclick="show('none')" src="http://sergey-oganesyan.ru/wp-content/uploads/2014/01/close.png"/>
 				<table>
@@ -58,14 +87,15 @@
 							Цена
 						</th>
 					</tr>
-					<tr ng-repeat="item in listOfIdItems">
+					<tr ng-repeat="item in listOfIdItems track by $index">
 						<td>
 							<p align="center">
+
 							<a ng-href="/item?id={{item.linkItem}}&c=0">
 							<p>{{item.name}}</p>
-
 							<img width="70px" height="110px" ng-src="{{item.pathToImage}}"/>
-								</a>
+							</a>
+
 							</p>
 
 						</td>
@@ -73,20 +103,26 @@
 							<p align="center">{{item.price}}грн</p>
 
 						</td>
+						<td>
+							<input type="button" ng-click="delete($index)"  value="удалить"/>
+						</td>
 					</tr>
 				</table>
 
-				Список товаров
+				<a onclick="show('none')" type="button" href="/order">
+					Оформить заказ
+					</a>
 
 			</div>
 
+
+			/......./
 		</div>
 
 
 
-		<script src="/static/lib/angular.js"></script>
-		<script src="/static/lib/angular-route.js"></script>
-		<script src="/static/js/controller.js"></script>
+		</div>
+
 			</body>
 	
 	

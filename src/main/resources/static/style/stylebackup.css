@@ -1,5 +1,5 @@
 body{
-	
+	overflow: scroll;
 }
 div{
 	
@@ -115,6 +115,20 @@ position: absolute;
 right:30px;
 top:20%;
 }
+div#registration{
+	display: none;
+	position: fixed;
+	min-weight: 300px;
+	min-height: 400px;
+	max-height:400px;
+	width:300px;
+	left:300px;
+	top:200px;
+	border: 1px solid black;
+	background-color: rgba(255, 240, 255, 1);
+	overflow: scroll;
+	z-index:100;
+}
 input#inputforsearch{
 	width:300px;
 	height: 30px;
@@ -162,6 +176,7 @@ div.content{
 	min-width:400px;
 	border-color: red;
 	position: absolute;
+
 	left:260px;
 	max-width: 550px;
 z-index: 3;
@@ -250,6 +265,7 @@ i#nameprice{
 	display: block;
 }
 p.itemsdescribe{
+	word-wrap: break-word;
 	width: 100%;
 	background-color: cornsilk;
 	line-height: 1.5;
@@ -280,10 +296,15 @@ textarea { resize: none;
 
  }
 
+img.close1{
+	position: fixed;
+	left:550px;
+	top:200px;
+}
 img.close{
-	position: absolute;
-	right: 0px;
-	top: 0px;
+	position: fixed;
+	left:950px;
+	top:200px;
 }
 b#price{
 	font-family: Monospaced;
@@ -330,9 +351,25 @@ table.registration{
 	border: 1px solid black;
 
 }
-a#registration{
+a#registration1{
 	color:white;
 }
+div#listItemBasket{
+	display: inline-block;
+	min-weight: 300px;
+	min-height: 200px;
+	max-height:600px;
+	width:400px;
+position:absolute;
+	right:-400px;
+	top:0px;
+
+
+	background-color: rgb(251, 253, 255);
+
+	z-index:100;
+}
+
 details{
 
 	margin-top: -15px;

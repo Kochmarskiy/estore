@@ -15,7 +15,9 @@ public class Characteristic {
         this.content = content;
         this.denomination = denomination;
     }
+    public Characteristic(){
 
+    }
     public void setDenomination(String denomination) {
         this.denomination = denomination;
     }

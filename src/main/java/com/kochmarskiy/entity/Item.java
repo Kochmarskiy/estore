@@ -14,6 +14,15 @@ public class Item {
     private String pathToImage;
     private List<Characteristic> characteristics;
     private int category;
+    private String[] files;
+
+    public String[] getFiles() {
+        return files;
+    }
+
+    public void setFiles(String[] files) {
+        this.files = files;
+    }
 
     public Item()
     {
@@ -28,6 +37,7 @@ public class Item {
         this.pathToImage = pathToImage;
         this.characteristics = characteristics;
         this.category = category;
+        
     }
 
 
@@ -77,6 +87,19 @@ public class Item {
 
     public void setCategory(int category) {
         this.category = category;
+    }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", describe='" + describe + '\'' +
+                ", pathToImage='" + pathToImage + '\'' +
+                ", characteristics=" + characteristics +
+                ", category=" + category +
+                '}';
     }
 
     @Override
